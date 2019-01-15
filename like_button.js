@@ -19,4 +19,4 @@ class LikeButton extends React.Component {
       'Like'
     );
   }
-}
+} 
