@@ -50,11 +50,6 @@ class App extends Component {
       );
     }
   }
-          )}
-        </ul> 
-      </div>
-    );
-  }
-}
+
 
 export default App;
