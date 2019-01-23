@@ -11,7 +11,7 @@ class App extends Component {
         { description: 'Throw the dishes away', isCompleted: false },
         { description: 'Buy new dishes', isCompleted: false }
       ]
-      ],
+      ,
       newTodoDescription: ''
     };
   }
