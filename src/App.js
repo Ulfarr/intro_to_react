@@ -37,9 +37,8 @@ class App extends Component {
   }
 
   deleteTodo(id) {
-    const remainingToDos = this.state.todos.filter((todo, remainingToDos) => {
-      debugger
-      return (todo.id !== remainingToDos.id)
+    const remainingToDos = this.state.todos.filter(todo => {
+      return (todo.id !== id)
     });
 
     this.setState({ todos: remainingToDos });
@@ -54,7 +53,7 @@ class App extends Component {
             value={ this.state.newTodoDescription }
             onChange={ (e) => this.handleChange(e) }
             />
-          <input type="submit" value="Add Todo" />
+          <input type="submit" />
         </form>
         <ul>
           { this.state.todos.map( (todo) =>
