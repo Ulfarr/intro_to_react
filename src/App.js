@@ -16,6 +16,8 @@ class App extends Component {
     this.deleteTodo = this.deleteTodo.bind(this);
   }
 
+
+
   handleChange(e) {
     this.setState({ newTodoDescription: e.target.value })
   }
@@ -26,7 +28,7 @@ class App extends Component {
     const newTodo = { id: this.state.todos.id, description: this.state.newTodoDescription, isCompleted: false };
     this.setState({ todos: [...this.state.todos, newTodo], newTodoDescription: '' });
   }
-  
+
   toggleComplete(index) {
     const todos = this.state.todos.slice();
     const todo = todos[index];
