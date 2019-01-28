@@ -16,8 +16,6 @@ class App extends Component {
     this.deleteTodo = this.deleteTodo.bind(this);
   }
 
-
-
   handleChange(e) {
     this.setState({ newTodoDescription: e.target.value })
   }
@@ -25,8 +23,8 @@ class App extends Component {
   handleSubmit(e) {
     e.preventDefault();
     if (!this.state.newTodoDescription) { return }
-    const newTodo = { id: this.state.todos.id, description: this.state.newTodoDescription, isCompleted: false };
-    this.setState({ todos: [...this.state.todos, newTodo], newTodoDescription: '' });
+    const newTodo = { description: this.state.newTodoDescription, isCompleted: false };
+    this.setState({ todos: [...this.state.todos, newTodo], newTodoDescription: '' });    
   }
 
   toggleComplete(index) {
@@ -38,34 +36,22 @@ class App extends Component {
 
   deleteTodo(id) {
     const remainingToDos = this.state.todos.filter(todo => {
-      return (todo.id !== id)
-    });
-
+      return (todo.id !== id) });
     this.setState({ todos: remainingToDos });
-}
-
+  }
+  
   render() {
     return (
       <div className="App">
-        <h1>Add a ToDo!</h1>
-        <form onSubmit={ (e) => this.handleSubmit(e)}>
-          <input type="text"
-            value={ this.state.newTodoDescription }
-            onChange={ (e) => this.handleChange(e) }
-            />
-          <input type="submit" />
-        </form>
         <ul>
-          { this.state.todos.map( (todo) =>
-            <ToDo key={ todo.id }
-              description={ todo.description }
-              isCompleted={ todo.isCompleted }
-              toggleComplete={ () => this.toggleComplete(todo) }
-              onDelete={ this.deleteTodo }
-               />
+        { this.state.todos.map( (todo, index) => 
+         <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index) } onDelete={ this.deleteTodo } />
           )}
-
-        </ul>
+        </ul>   
+        <form onSubmit={ (e) => this.handleSubmit(e) }>
+          <input type="text" value={ this.state.newTodoDescription } onChange={ (e) => this.handleChange(e) } />  
+          <input type="submit" />
+         </form>
       </div>
     );
   }
