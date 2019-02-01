@@ -14,8 +14,7 @@ class App extends Component {
       newTodoDescription: ''
       
     };
-    this.deleteTodo = this.deleteTodo.bind(this);
-  }
+   }
 
 
 
@@ -38,8 +37,8 @@ class App extends Component {
   }
 
   deleteTodo(index) {
-    const remainingTodos = this.state.todos.filter((todo, remainingTodos) => {
-      return (todo.index !== remainingTodos.index)
+    const remainingTodos = this.state.todos.filter((todo, i) => {
+      return i !== index;
     });
       this.setState({ todos: remainingTodos});
   }
@@ -50,7 +49,13 @@ class App extends Component {
       <div className="App">
          <ul>
            { this.state.todos.map( (todo, index) => 
-            <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index) } onDelete={ this.deleteTodo } />
+            <ToDo 
+              key={ index } 
+              description={ todo.description } 
+              isCompleted={ todo.isCompleted } 
+              toggleComplete={ () => this.toggleComplete(index) } 
+              onDelete={ () => this.deleteTodo(index) } 
+            />
             )}
             
           </ul>
